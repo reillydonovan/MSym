@@ -1,0 +1,79 @@
+﻿#pragma kernel Update
+
+#include "UnityCG.cginc"
+#include "SimplexNoise3D.cginc"
+
+RWStructuredBuffer<float4> PositionBuffer;
+RWStructuredBuffer<float4> NormalBuffer;
+
+CBUFFER_START(Params)
+    float Time;
+    float Extent;
+    float NoiseAmplitude;
+    float NoiseFrequency;
+    float3 NoiseOffset;
+    uint RandomSeed;
+CBUFFER_END
+
+// Hash function from H. Schechter & R. Bridson, goo.gl/RXiKaH
+uint Hash(uint s)
+{
+    s ^= 2747636419u;
+    s *= 2654435769u;
+    s ^= s >> 16;
+    s *= 2654435769u;
+    s ^= s >> 16;
+    s *= 2654435769u;
+    return s;
+}
+
+float Random(uint seed)
+{
+    return float(Hash(seed)) / 4294967295.0; // 2^32-1
+}
+
+float3 RandomPoint(uint id)
+{
+    float u = Random(id + 8289473) * UNITY_PI * 2;
+    float z = Random(id + 1238948) * 2 - 1;
+    return float3(float2(cos(u), sin(u)) * sqrt(1 - z * z), z);
+}
+
+[numthreads(128, 1, 1)]
+void Update(uint id : SV_DispatchThreadID)
+{
+    uint idx1 = id * 3;
+    uint idx2 = id * 3 + 1;
+    uint idx3 = id * 3 + 2;
+
+    uint seed = RandomSeed * 139 + (uint)floor(Time + id * 0.1);
+    float3 v1 = RandomPoint(idx1 + seed);
+    float3 v2 = RandomPoint(idx2 + seed);
+    float3 v3 = RandomPoint(idx3 + seed);
+
+    v2 = normalize(v1 + normalize(v2 - v1) * Extent);
+    v3 = normalize(v1 + normalize(v3 - v1) * Extent);
+
+    float3 offs = NoiseOffset + RandomSeed * 1.348887;
+    float l1 = snoise(v1 * NoiseFrequency + offs).w;
+    float l2 = snoise(v2 * NoiseFrequency + offs).w;
+    float l3 = snoise(v3 * NoiseFrequency + offs).w;
+
+    l1 = abs(l1 * l1 * l1);
+    l2 = abs(l2 * l2 * l2);
+    l3 = abs(l3 * l3 * l3);
+
+    v1 *= 1 + l1 * NoiseAmplitude;
+    v2 *= 1 + l2 * NoiseAmplitude;
+    v3 *= 1 + l3 * NoiseAmplitude;
+
+    float3 n = normalize(cross(v2 - v1, v3 - v2));
+
+    PositionBuffer[idx1] = float4(v1, 0);
+    PositionBuffer[idx2] = float4(v2, 0);
+    PositionBuffer[idx3] = float4(v3, 0);
+
+    NormalBuffer[idx1] = float4(n, 0);
+    NormalBuffer[idx2] = float4(n, 0);
+    NormalBuffer[idx3] = float4(n, 0);
+}
