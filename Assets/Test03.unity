@@ -1146,7 +1146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &378495259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1159,12 +1159,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _instanceCount: 1000
-  _template: {fileID: 11400000, guid: a73837610b9d85f4b839c915c22acdc2, type: 2}
-  _radius: 0.005
-  _trim: 1
+  _template: {fileID: 11400000, guid: 2f3e96656444aa24b895cfe3b9d3cc1d, type: 2}
+  _radius: 0.002
+  _trim: 0.05
   _attractor: {fileID: 690517179}
   _attractorPosition: {x: 0, y: 0, z: 0}
-  _attractorSpread: 0.01
+  _attractorSpread: 0.005
   _attractorForce: 5
   _forceRandomness: 0.6
   _drag: 2
@@ -1175,7 +1175,7 @@ MonoBehaviour:
   _noiseSpread: 1.5
   _noiseMotion: 0.15
   _material: {fileID: 2100000, guid: a28f050c68a3c9943ac87aeb69e40adc, type: 2}
-  _gradient: {fileID: 11400000, guid: 73b165f4d718c0b41be2b2685960f8eb, type: 2}
+  _gradient: {fileID: 11400000, guid: 202a0875a5bc2554a932e60d8ed7e7ec, type: 2}
   _randomSeed: 0
   _compute: {fileID: 7200000, guid: ab946a4ad9c5b0041892c579a6c413c4, type: 3}
 --- !u!4 &378495260
@@ -1546,7 +1546,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &489174967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1559,12 +1559,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _instanceCount: 1000
-  _template: {fileID: 11400000, guid: a73837610b9d85f4b839c915c22acdc2, type: 2}
-  _radius: 0.005
-  _trim: 1
+  _template: {fileID: 11400000, guid: 2f3e96656444aa24b895cfe3b9d3cc1d, type: 2}
+  _radius: 0.002
+  _trim: 0.5
   _attractor: {fileID: 1170372019}
   _attractorPosition: {x: 0, y: 0, z: 0}
-  _attractorSpread: 0.01
+  _attractorSpread: 0.005
   _attractorForce: 5
   _forceRandomness: 0.6
   _drag: 2
@@ -1575,7 +1575,7 @@ MonoBehaviour:
   _noiseSpread: 1.5
   _noiseMotion: 0.15
   _material: {fileID: 2100000, guid: a28f050c68a3c9943ac87aeb69e40adc, type: 2}
-  _gradient: {fileID: 11400000, guid: 73b165f4d718c0b41be2b2685960f8eb, type: 2}
+  _gradient: {fileID: 11400000, guid: 202a0875a5bc2554a932e60d8ed7e7ec, type: 2}
   _randomSeed: 0
   _compute: {fileID: 7200000, guid: ab946a4ad9c5b0041892c579a6c413c4, type: 3}
 --- !u!4 &489174968
