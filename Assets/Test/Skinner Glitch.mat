@@ -25,23 +25,23 @@ Material:
     m_Floats:
     - _AreaThreshold: 0.0172
     - _AttackLength: 0.097
-    - _BaseHue: 0.511
-    - _Brightness: 1.26
-    - _BrightnessOffs: 0.9
+    - _BaseHue: 0.52
+    - _Brightness: 2.58
+    - _BrightnessOffs: 0.71
     - _ColorAnimLength: 0.5
     - _Duration: 0.5
     - _EdgeThreshold: 0.78
-    - _EmissionProb: 0.72
+    - _EmissionProb: 0.655
     - _EndIntensity: 0.8
-    - _HueRandomness: 0.811
-    - _HueShift: -0.39
+    - _HueRandomness: 0.345
+    - _HueShift: -0.04
     - _Intensity: 0.8
     - _IntensityOffs: 1
-    - _Metallic: 0.654
-    - _ModDuration: 0.745
+    - _Metallic: 1
+    - _ModDuration: 1
     - _Probability: 0.2
-    - _Saturation: 0.954
-    - _Smoothness: 0.745
+    - _Saturation: 1
+    - _Smoothness: 1
     - _StartIntensity: 1.5
     - _Threshold: 1
     - _Threshold2: 1
