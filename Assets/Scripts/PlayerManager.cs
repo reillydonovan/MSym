@@ -16,13 +16,13 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B)) nextObject();
+        if (Input.GetKeyDown(KeyCode.B)) nextPlayer();
 
-        if (KinectController.GetComponent<KinectManager>().calibrationText.text == "WAITING FOR USERS") nextObject();
+        if (KinectController.GetComponent<KinectManager>().calibrationText.text == "WAITING FOR USERS") nextPlayer();
         
     }
 
-    public void nextObject()
+    public void nextPlayer()
     {
         for (int i = 0; i < playerArray.Length; i++)
         {
